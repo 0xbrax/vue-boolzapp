@@ -172,14 +172,20 @@ var app = new Vue({
             this.contactSelected = index;
         },
         sendMessage() {
-            let newSentMessage = {
-                message: this.inputMessage,
-                status: 'sent'
-            };
-            this.contacts[this.contactSelected].messages.push(newSentMessage);
-            this.inputMessage = '';
+            this.inputMessage.trim();
 
-            this.autoReply();
+            if (!this.inputMessage == '' && this.inputMessage.trim().length > 0) {
+
+                let newSentMessage = {
+                    message: this.inputMessage,
+                    status: 'sent'
+                };
+
+                this.contacts[this.contactSelected].messages.push(newSentMessage);
+                this.inputMessage = '';
+    
+                this.autoReply();
+            }
         },
         autoReply() {
             setTimeout(() => {
@@ -189,6 +195,27 @@ var app = new Vue({
                 };
                 this.contacts[this.contactSelected].messages.push(newReceivedMessage);
             }, 1000);
+        },
+        runSpeechRecognition() {
+
+            var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            var recognition = new SpeechRecognition();
+
+            recognition.onstart = function() {
+                console.log('sto registrando')
+            }
+            
+            recognition.onspeechend = function() {
+                console.log('ho registrato')
+                recognition.stop();
+            }
+    
+            recognition.onresult = function(event) {
+                var transcript = event.results[0][0].transcript;
+
+                console.log(transcript);
+            };
+            recognition.start();
         }
     }
 });

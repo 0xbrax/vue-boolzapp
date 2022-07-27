@@ -78,6 +78,7 @@
                             <div>
                                 <input type="text" placeholder="Scrivi messaggio" v-model="inputMessage" @keyup.enter="sendMessage()">
                                 <button @click="sendMessage()">INVIA</button>
+                                <button @click="runSpeechRecognition()">S2T</button>
                             </div>
                         </div>
                     </div>
