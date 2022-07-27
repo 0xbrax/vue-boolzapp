@@ -163,9 +163,12 @@ var app = new Vue({
                     }
                 ],
             }
-        ]
+        ],
+        contactSelected: 0
     },
     methods: {
-
+        whoIsSelected(index) {
+            this.contactSelected = index;
+        }
     }
 });
