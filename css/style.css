@@ -15,3 +15,11 @@ body {
     height: 400px;
     overflow-y: scroll;
 }
+
+.sent {
+    background-color: greenyellow;
+}
+
+.received {
+    background-color: aqua;
+}

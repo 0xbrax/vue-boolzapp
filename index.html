@@ -66,12 +66,18 @@
 
                             <div class="message-container">
                                 <div v-for="message in contacts[contactSelected].messages">
-                                    {{message.message}}
+                                    <div v-if="message.status == 'sent'">
+                                        <div class="sent">{{message.message}}</div>
+                                    </div>
+                                    <div v-else-if="message.status == 'received'">
+                                        <div class="received">{{message.message}}</div>
+                                    </div>
                                 </div>
                             </div>
 
                             <div>
-                                <input type="text" placeholder="Scrivi messaggio">
+                                <input type="text" placeholder="Scrivi messaggio" v-model="inputMessage" @keyup.enter="sendMessage()">
+                                <button @click="sendMessage()">INVIA</button>
                             </div>
                         </div>
                     </div>

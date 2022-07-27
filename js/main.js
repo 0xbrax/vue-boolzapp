@@ -164,11 +164,31 @@ var app = new Vue({
                 ],
             }
         ],
-        contactSelected: 0
+        contactSelected: 0,
+        inputMessage: ''
     },
     methods: {
         whoIsSelected(index) {
             this.contactSelected = index;
+        },
+        sendMessage() {
+            let newSentMessage = {
+                message: this.inputMessage,
+                status: 'sent'
+            };
+            this.contacts[this.contactSelected].messages.push(newSentMessage);
+            this.inputMessage = '';
+
+            this.autoReply();
+        },
+        autoReply() {
+            setTimeout(() => {
+                let newReceivedMessage = {
+                    message: 'Yes!',
+                    status: 'received'
+                };
+                this.contacts[this.contactSelected].messages.push(newReceivedMessage);
+            }, 1000);
         }
     }
 });
