@@ -198,7 +198,8 @@ var app = new Vue({
         },
         runSpeechRecognition() {
 
-            var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            var webkitSpeechRecognition;
+            var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
             var recognition = new SpeechRecognition();
 
             recognition.onstart = function() {
@@ -215,6 +216,7 @@ var app = new Vue({
 
                 console.log(transcript);
             };
+
             recognition.start();
         }
     }
