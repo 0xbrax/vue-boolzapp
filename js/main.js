@@ -195,29 +195,38 @@ var app = new Vue({
                     status: 'received'
                 };
                 this.contacts[this.contactSelected].messages.push(newReceivedMessage);
-            }, 1000);
+            }, 1500);
         },
         runSpeechRecognition() {
-            var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            var recognition = new SpeechRecognition();
+            if ('webkitSpeechRecognition' in window) {
+                var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+                var recognition = new SpeechRecognition();
 
-            recognition.onstart = function() {
-                console.log('Sto registrando')
+                //SpeechRecognition.lang = 'it-IT';
+
+                recognition.onstart = function() {
+                    console.log('Sto registrando')
+                }
+                
+                recognition.onspeechend = function() {
+                    console.log('Ho registrato')
+                    recognition.stop();
+                }
+        
+                recognition.onresult = (event) => {
+                    var transcript = event.results[0][0].transcript;
+
+                    console.log(transcript)
+                    this.inputMessage = transcript;
+                };
+
+                recognition.start();
+            } else {
+                alert('Speech to text non disponibile, prova su un altro browser.')
             }
-            
-            recognition.onspeechend = function() {
-                console.log('Ho registrato')
-                recognition.stop();
-            }
-    
-            recognition.onresult = (event) => {
-                var transcript = event.results[0][0].transcript;
-
-                console.log(transcript)
-                this.inputMessage = transcript;
-            };
-
-            recognition.start();
-        }
+        },
+    },
+    mounted() {
+        console.log('INFO: Possibilità di usare lo speech to text su Chrome e Safari in italiano o su Edge in inglese.')
     }
 });

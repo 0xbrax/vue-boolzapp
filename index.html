@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="it-IT">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,12 +38,21 @@
                             </div>
 
                             <div class="contacts-container">
-                                <div v-for="(contact, contactIndex) in contacts" @click="whoIsSelected(contactIndex)" class="d-flex">
+                                <div 
+                                    v-for="(contact, contactIndex) in contacts" 
+                                    v-if="contact.name.toLowerCase().includes(inputSearch.trim().toLowerCase())"
+                                    @click="whoIsSelected(contactIndex)" 
+                                    class="d-flex">
                                     <img v-bind:src="`img/avatar${contact.avatar}.jpg`" v-bind:alt="contact.name" class="rounded-circle" />
                                     <div>
                                         <div>{{contact.name}}</div>
                                         <div>Ultimo messaggio</div>
                                     </div>
+                                </div>
+
+                                <div 
+                                    v-else>
+                                    Nessun contatto trovato
                                 </div>
                             </div>
                         </div>
