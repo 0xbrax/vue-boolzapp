@@ -165,7 +165,8 @@ var app = new Vue({
             }
         ],
         contactSelected: 0,
-        inputMessage: ''
+        inputMessage: '',
+        inputSearch: ''
     },
     methods: {
         whoIsSelected(index) {
@@ -197,24 +198,23 @@ var app = new Vue({
             }, 1000);
         },
         runSpeechRecognition() {
-
-            var webkitSpeechRecognition;
-            var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+            var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             var recognition = new SpeechRecognition();
 
             recognition.onstart = function() {
-                console.log('sto registrando')
+                console.log('Sto registrando')
             }
             
             recognition.onspeechend = function() {
-                console.log('ho registrato')
+                console.log('Ho registrato')
                 recognition.stop();
             }
     
-            recognition.onresult = function(event) {
+            recognition.onresult = (event) => {
                 var transcript = event.results[0][0].transcript;
 
-                console.log(transcript);
+                console.log(transcript)
+                this.inputMessage = transcript;
             };
 
             recognition.start();
