@@ -1,16 +1,17 @@
 body {
     height: 100vh;
 }
-/*
-#app-container {
-    height: 100%;
-}
-*/
+
 #app-container img {
     height: 80px;
 }
 
 .contacts-container {
+    height: 400px;
+    overflow-y: scroll;
+}
+
+.message-container {
     height: 400px;
     overflow-y: scroll;
 }
