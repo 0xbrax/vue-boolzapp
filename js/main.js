@@ -166,7 +166,24 @@ var app = new Vue({
         ],
         contactSelected: 0,
         inputMessage: '',
-        inputSearch: ''
+        inputSearch: '',
+        reply: [
+            {
+                message: `Ok!`
+            },
+            {
+                message: `Oggi è una bella giornata.`
+            },
+            {
+                message: `Mi piacciono i treni.`
+            },
+            {
+                message: `Ho mangiato il gelato al cioccolato, era dolce, ma anche un po' salato...`
+            },
+            {
+                message: `Ti andrebbe di raccogliere le fragole insieme a me?`
+            }
+        ]
     },
     methods: {
         whoIsSelected(index) {
@@ -190,8 +207,9 @@ var app = new Vue({
         },
         autoReply() {
             setTimeout(() => {
+                let randomMessage = this.reply[this.randomNumber(0, this.reply.length)].message;
                 let newReceivedMessage = {
-                    message: 'Yes!',
+                    message: randomMessage,
                     status: 'received'
                 };
                 this.contacts[this.contactSelected].messages.push(newReceivedMessage);
@@ -201,8 +219,6 @@ var app = new Vue({
             if ('webkitSpeechRecognition' in window) {
                 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
                 var recognition = new SpeechRecognition();
-
-                //SpeechRecognition.lang = 'it-IT';
 
                 recognition.onstart = function() {
                     console.log('Sto registrando')
@@ -225,6 +241,14 @@ var app = new Vue({
                 alert('Speech to text non disponibile, prova su un altro browser.')
             }
         },
+        randomNumber(min, max) {
+            const number = Math.floor(Math.random() * (max - min + 1) + min);
+        
+            return number;
+        },
+        test() {
+            console.log('bella zi')
+        }
     },
     mounted() {
         console.log('INFO: Possibilità di usare lo speech to text su Chrome e Safari in italiano o su Edge in inglese.')
