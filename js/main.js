@@ -183,7 +183,8 @@ var app = new Vue({
             {
                 message: `Ti andrebbe di raccogliere le fragole insieme a me?`
             }
-        ]
+        ],
+        messageSelected: 0
     },
     methods: {
         whoIsSelected(index) {
@@ -246,9 +247,18 @@ var app = new Vue({
         
             return number;
         },
-        test() {
-            console.log('bella zi')
+        deleteMessage(index) {
+            this.contacts[this.contactSelected].messages.splice(index, 1);
         }
+    },
+    computed: {
+        contactsSearched() {
+            let filteredContacts = this.contacts.filter(contact => {
+                return contact.name.toLowerCase().includes(this.inputSearch.trim().toLowerCase())
+            });
+            return filteredContacts
+        }
+
     },
     mounted() {
         console.log('INFO: Possibilità di usare lo speech to text su Chrome e Safari in italiano o su Edge in inglese.')

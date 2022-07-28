@@ -39,9 +39,8 @@
 
                             <div class="contacts-container">
                                 <div 
-                                    v-for="(contact, contactIndex) in contacts" 
-                                    v-if="contact.name.toLowerCase().includes(inputSearch.trim().toLowerCase())" 
-                                    @click="whoIsSelected(contactIndex)" 
+                                    v-for="(contact, contactIndex) in contactsSearched" 
+                                    @click="whoIsSelected(contactIndex)"
                                     class="d-flex">
                                     <img v-bind:src="`img/avatar${contact.avatar}.jpg`" v-bind:alt="contact.name" class="rounded-circle" />
                                     <div>
@@ -51,8 +50,8 @@
                                 </div>
 
                                 <div 
-                                    v-else>
-                                    {{test()}}
+                                    v-if="contactsSearched.length == 0">
+                                    test
                                 </div>
                             </div>
                         </div>
@@ -74,12 +73,12 @@
                             </div>
 
                             <div class="message-container">
-                                <div v-for="message in contacts[contactSelected].messages">
+                                <div v-for="(message, messageIndex) in contacts[contactSelected].messages">
                                     <div v-if="message.status == 'sent'">
-                                        <div class="sent">{{message.message}}</div>
+                                        <div class="sent">{{message.message}} <span @click="deleteMessage(messageIndex)">ELIMINA</span></div>
                                     </div>
                                     <div v-else-if="message.status == 'received'">
-                                        <div class="received">{{message.message}}</div>
+                                        <div class="received">{{message.message}} <span @click="deleteMessage(messageIndex)">ELIMINA</span></div>
                                     </div>
                                 </div>
                             </div>
