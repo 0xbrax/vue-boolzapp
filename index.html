@@ -45,13 +45,15 @@
                                     <img v-bind:src="`img/avatar${contact.avatar}.jpg`" v-bind:alt="contact.name" class="rounded-circle" />
                                     <div>
                                         <div>{{contact.name}}</div>
-                                        <div>Ultimo messaggio</div>
+
+                                        <div>{{getLastMessage(contactIndex)}}</div>
+                                        <div>{{formatTime(getLastDate(contactIndex))}}</div>
                                     </div>
                                 </div>
 
                                 <div 
                                     v-if="contactsSearched.length == 0">
-                                    test
+                                    Nessun contatto trovato
                                 </div>
                             </div>
                         </div>
@@ -73,12 +75,10 @@
                             </div>
 
                             <div class="message-container">
-                                <div v-for="(message, messageIndex) in contacts[contactSelected].messages">
-                                    <div v-if="message.status == 'sent'">
-                                        <div class="sent">{{message.message}} <span @click="deleteMessage(messageIndex)">ELIMINA</span></div>
-                                    </div>
-                                    <div v-else-if="message.status == 'received'">
-                                        <div class="received">{{message.message}} <span @click="deleteMessage(messageIndex)">ELIMINA</span></div>
+                                <div v-for="(message, messageIndex) in contacts[contactSelected].messages">                                    
+                                    <div v-bind:class="messageStatus(messageIndex)">
+                                        {{message.message}} <span @click="deleteMessage(messageIndex)">ELIMINA</span>
+                                        <div>{{formatTime(message.date)}}</div>
                                     </div>
                                 </div>
                             </div>
@@ -96,6 +96,7 @@
         
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
     </body>
 </html>

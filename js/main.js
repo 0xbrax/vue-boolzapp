@@ -183,8 +183,7 @@ var app = new Vue({
             {
                 message: `Ti andrebbe di raccogliere le fragole insieme a me?`
             }
-        ],
-        messageSelected: 0
+        ]
     },
     methods: {
         whoIsSelected(index) {
@@ -196,20 +195,22 @@ var app = new Vue({
             if (!this.inputMessage == '' && this.inputMessage.trim().length > 0) {
 
                 let newSentMessage = {
+                    date: this.liveTime(),
                     message: this.inputMessage,
                     status: 'sent'
                 };
 
                 this.contacts[this.contactSelected].messages.push(newSentMessage);
                 this.inputMessage = '';
-    
+
                 this.autoReply();
             }
         },
         autoReply() {
             setTimeout(() => {
-                let randomMessage = this.reply[this.randomNumber(0, this.reply.length)].message;
+                let randomMessage = this.reply[this.randomNumber(0, this.reply.length - 1)].message;
                 let newReceivedMessage = {
+                    date: this.liveTime(),
                     message: randomMessage,
                     status: 'received'
                 };
@@ -229,7 +230,7 @@ var app = new Vue({
                     console.log('Ho registrato')
                     recognition.stop();
                 }
-        
+
                 recognition.onresult = (event) => {
                     var transcript = event.results[0][0].transcript;
 
@@ -244,21 +245,43 @@ var app = new Vue({
         },
         randomNumber(min, max) {
             const number = Math.floor(Math.random() * (max - min + 1) + min);
-        
+
             return number;
+        },
+        messageStatus(index) {
+            if (this.contacts[this.contactSelected].messages[index].status == 'sent') {
+                return 'sent';
+            } else {
+                return 'received';
+            }
         },
         deleteMessage(index) {
             this.contacts[this.contactSelected].messages.splice(index, 1);
+        },
+        liveTime() {
+            const timeStamp = dayjs().format('DD/MM/YYYY HH:mm:ss');
+            return timeStamp;
+        },
+        formatTime(date) {
+            let formatTime = date.slice(11, 16);
+            return formatTime;
+        },
+        getLastMessage(index) {
+            let lastMessage = this.contacts[index].messages.length - 1;
+            return this.contacts[index].messages[lastMessage].message;
+        },
+        getLastDate(index) {
+            let lastDate = this.contacts[index].messages.length - 1;
+            return this.contacts[index].messages[lastDate].date;
         }
     },
     computed: {
         contactsSearched() {
-            let filteredContacts = this.contacts.filter(contact => {
-                return contact.name.toLowerCase().includes(this.inputSearch.trim().toLowerCase())
+            const filteredContacts = this.contacts.filter(contact => {
+                return contact.name.toLowerCase().includes(this.inputSearch.trim().toLowerCase());
             });
-            return filteredContacts
+            return filteredContacts;
         }
-
     },
     mounted() {
         console.log('INFO: Possibilità di usare lo speech to text su Chrome e Safari in italiano o su Edge in inglese.')
