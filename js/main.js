@@ -1,6 +1,10 @@
 var app = new Vue({
     el: '#vue-app',
     data: {
+        user: {
+            name: 'Sonia',
+            avatar: '_io'
+        },
         contacts: [
             {
                 name: 'Michele',
@@ -167,6 +171,8 @@ var app = new Vue({
         contactSelected: 0,
         inputMessage: '',
         inputSearch: '',
+        messageSelected: 0,
+        infoBtn: false,
         reply: [
             {
                 message: `Ok!`
@@ -250,9 +256,9 @@ var app = new Vue({
         },
         messageStatus(index) {
             if (this.contacts[this.contactSelected].messages[index].status == 'sent') {
-                return 'sent';
+                return 'sent float-r';
             } else {
-                return 'received';
+                return 'received float-l';
             }
         },
         deleteMessage(index) {
@@ -263,7 +269,7 @@ var app = new Vue({
             return timeStamp;
         },
         formatTime(date) {
-            let formatTime = date.slice(11, 16);
+            let formatTime = date.substring(11, 16);
             return formatTime;
         },
         getLastMessage(index) {
@@ -273,7 +279,10 @@ var app = new Vue({
         getLastDate(index) {
             let lastDate = this.contacts[index].messages.length - 1;
             return this.contacts[index].messages[lastDate].date;
-        }
+        },
+        whoIsInfo(index) {
+            console.log(this.contacts[this.contactSelected].messages[index])
+        },
     },
     computed: {
         contactsSearched() {

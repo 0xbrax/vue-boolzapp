@@ -1,25 +1,257 @@
-body {
-    height: 100vh;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+img {
+    display: block;
 }
 
-#app-container img {
+:root {
+    --fa-rotate-angle: 45deg;
+    --light-main-back: rgba(0,168,132,1);
+    --light-sec-back: rgba(223,224,221,1);
+    --light-main-chat: #d8d8d8;
+    --light-sec-chat: #ffffff;
+    --alert-back: #8edafc;
+    --light-chat-toggle: #eeeded;
+    --message-sent: #d5f9ba;
+    --message-received: #ffffff;
+    --message-delete: #ffff00;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;;
+    height: 100vh;
+    background: var(--light-main-back);
+    background: linear-gradient(180deg, var(--light-main-back) 0%, var(--light-main-back) 25%, var(--light-sec-back) 25%);
+}
+#vue-app {
+    width: 80%;
+    max-width: 1400px;
+}
+
+
+
+.flex {
+    display: flex;
+}
+.dir-col {
+    flex-direction: column;
+}
+.justify-ctr {
+    justify-content: center;
+}
+.justify-sp-bw {
+    justify-content: space-between;
+}
+.align-ctr {
+    align-items: center;
+}
+
+.float-l {
+    float: left;
+    clear: left;
+}
+.float-r {
+    float: right;
+    clear: right;
+}
+
+.text-l {
+    text-align: left;
+}
+.text-r {
+    text-align: right;
+}
+
+
+
+.mx-5 {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.my-5 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.mx-10 {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.my-10 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.ml-10 {
+    margin-left: 10px;
+}
+.mr-10 {
+    margin-right: 10px;
+}
+.ml-20 {
+    margin-left: 20px;
+}
+.mr-20 {
+    margin-right: 20px;
+}
+
+.px-5 {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.py-5 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.px-10 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.py-10 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.pt-10 {
+    padding-top: 10px;
+}
+.pb-10 {
+    padding-bottom: 10px;
+}
+
+
+
+.width-100 {
+    width: 100%;
+}
+.rounded-circle {
+    border-radius: 50%;
+}
+.block-heigth-40 {
+    height: 40px;
+}
+.line-ht-20 {
+    line-height: 20px;
+}
+.text-bold {
+    font-weight: bold;
+}
+.font-sz-10 {
+    font-size: 10px;
+}
+.font-sz-20 {
+    font-size: 20px;
+}
+.font-sz-25 {
+    font-size: 25px;
+}
+
+
+
+#app-container {
+    height: 80vh;
+    box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.5);
+}
+
+#user-container {
+    width: 35%;
+    height: 100%;
+}
+#message-container {
+    width: 65%;
+    height: 100%;
+}
+
+
+
+#user {
     height: 80px;
+    background-color: var(--light-main-chat);
+}
+
+#user img {
+    height: 60px;
 }
 
 .contacts-container {
-    height: 400px;
+    height: calc(100% - (80px + 40px + 50px));
     overflow-y: scroll;
 }
 
-.message-container {
-    height: 400px;
-    overflow-y: scroll;
+#contact {
+    border-top: 2px solid var(--light-main-chat);
 }
+
+#contact img {
+    height: 80px;
+}
+
+.message-preview {
+    height: 40px;
+    overflow: hidden;
+}
+
+
+
+#chat-info {
+    height: 80px;
+}
+
+#chat-info img {
+    height: 60px;
+}
+
+#input-section {
+    height: 80px;
+}
+
+.message-section {
+    height: calc(100% - (80px + 80px));
+    overflow-y: scroll;
+    background-image: url(../img/mine.jpg);
+    background-repeat: repeat;
+}
+
+.message-content {
+    padding: 15px;
+    border-radius: 15px;
+    max-width: 60%;
+    margin: 30px;
+    position: relative;
+}
+
+.info-btn:hover {
+
+}
+.delete-message {
+    position: absolute;
+    top: 30px;
+    right: 15px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: var(--message-delete);
+}
+
+
 
 .sent {
-    background-color: greenyellow;
+    background-color: var(--message-sent);
+}
+.received {
+    background-color: var(--message-received);
 }
 
-.received {
-    background-color: aqua;
+
+
+.light-main-chat {
+    background-color: var(--light-main-chat);
+}
+.light-sec-chat {
+    background-color: var(--light-sec-chat);
+}
+.alert-back {
+    background-color: var(--alert-back);
+}
+.chat-toggle {
+    background-color: var(--light-chat-toggle);
 }
