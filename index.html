@@ -120,7 +120,7 @@
 
                                 <input class="width-100 px-5 py-5 mx-10" type="text" placeholder="Scrivi messaggio" v-model="inputMessage" @keyup.enter="sendMessage()">
 
-                                <div @click="messageByOpenAI(); sendMessage();" class="font-sz-25 mr-10">
+                                <div @click="sendMessage()" class="font-sz-25 mr-10">
                                     <i class="fa-solid fa-location-arrow fa-rotate-by"></i>
                                 </div>
                                 <div @click="runSpeechRecognition()" class="font-sz-25 mr-10">
