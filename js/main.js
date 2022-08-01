@@ -12,17 +12,17 @@ var app = new Vue({
                 visible: true,
                 messages: [
                     {
-                        date: '10/01/2020 15:30:55',
+                        dateStamp: '10/01/2020 15:30:55',
                         message: 'Hai portato a spasso il cane?',
                         status: 'sent'
                     },
                     {
-                        date: '10/01/2020 15:50:00',
+                        dateStamp: '10/01/2020 15:50:00',
                         message: 'Ricordati di stendere i panni',
                         status: 'sent'
                     },
                     {
-                        date: '10/01/2020 16:15:22',
+                        dateStamp: '10/01/2020 16:15:22',
                         message: 'Tutto fatto!',
                         status: 'received'
                     }
@@ -34,17 +34,17 @@ var app = new Vue({
                 visible: true,
                 messages: [
                     {
-                        date: '20/03/2020 16:30:00',
+                        dateStamp: '20/03/2020 16:30:00',
                         message: 'Ciao come stai?',
                         status: 'sent'
                     },
                     {
-                        date: '20/03/2020 16:30:55',
+                        dateStamp: '20/03/2020 16:30:55',
                         message: 'Bene grazie! Stasera ci vediamo?',
                         status: 'received'
                     },
                     {
-                        date: '20/03/2020 16:35:00',
+                        dateStamp: '20/03/2020 16:35:00',
                         message: 'Mi piacerebbe ma devo andare a fare la spesa.',
                         status: 'sent'
                     }
@@ -56,17 +56,17 @@ var app = new Vue({
                 visible: true,
                 messages: [
                     {
-                        date: '28/03/2020 10:10:40',
+                        dateStamp: '28/03/2020 10:10:40',
                         message: 'La Marianna va in campagna',
                         status: 'received'
                     },
                     {
-                        date: '28/03/2020 10:20:10',
+                        dateStamp: '28/03/2020 10:20:10',
                         message: 'Sicuro di non aver sbagliato chat?',
                         status: 'sent'
                     },
                     {
-                        date: '28/03/2020 16:15:22',
+                        dateStamp: '28/03/2020 16:15:22',
                         message: 'Ah scusa!',
                         status: 'received'
                     }
@@ -78,12 +78,12 @@ var app = new Vue({
                 visible: true,
                 messages: [
                     {
-                        date: '10/01/2020 15:30:55',
+                        dateStamp: '10/01/2020 15:30:55',
                         message: 'Lo sai che ha aperto una nuova pizzeria?',
                         status: 'sent'
                     },
                     {
-                        date: '10/01/2020 15:50:00',
+                        dateStamp: '10/01/2020 15:50:00',
                         message: 'Si, ma preferirei andare al cinema',
                         status: 'received'
                     }
@@ -95,12 +95,12 @@ var app = new Vue({
                 visible: true,
                 messages: [
                     {
-                        date: '10/01/2020 15:30:55',
+                        dateStamp: '10/01/2020 15:30:55',
                         message: 'Ricordati di chiamare la nonna',
                         status: 'sent'
                     },
                     {
-                        date: '10/01/2020 15:50:00',
+                        dateStamp: '10/01/2020 15:50:00',
                         message: 'Va bene, stasera la sento',
                         status: 'received'
                     }
@@ -112,17 +112,17 @@ var app = new Vue({
                 visible: true,
                 messages: [
                     {
-                        date: '10/01/2020 15:30:55',
+                        dateStamp: '10/01/2020 15:30:55',
                         message: 'Ciao Claudia, hai novità?',
                         status: 'sent'
                     },
                     {
-                        date: '10/01/2020 15:50:00',
+                        dateStamp: '10/01/2020 15:50:00',
                         message: 'Non ancora',
                         status: 'received'
                     },
                     {
-                        date: '10/01/2020 15:51:00',
+                        dateStamp: '10/01/2020 15:51:00',
                         message: 'Nessuna nuova, buona nuova',
                         status: 'sent'
                     }
@@ -134,12 +134,12 @@ var app = new Vue({
                 visible: true,
                 messages: [
                     {
-                        date: '10/01/2020 15:30:55',
+                        dateStamp: '10/01/2020 15:30:55',
                         message: 'Fai gli auguri a Martina che è il suo compleanno!',
                         status: 'sent'
                     },
                     {
-                        date: '10/01/2020 15:50:00',
+                        dateStamp: '10/01/2020 15:50:00',
                         message: 'Grazie per avermelo ricordato, le scrivo subito!',
                         status: 'received'
                     }
@@ -151,17 +151,17 @@ var app = new Vue({
                 visible: true,
                 messages: [
                     {
-                        date: '10/01/2020 15:30:55',
+                        dateStamp: '10/01/2020 15:30:55',
                         message: 'Ciao, andiamo a mangiare la pizza stasera?',
                         status: 'received'
                     },
                     {
-                        date: '10/01/2020 15:50:00',
+                        dateStamp: '10/01/2020 15:50:00',
                         message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
                         status: 'sent'
                     },
                     {
-                        date: '10/01/2020 15:51:00',
+                        dateStamp: '10/01/2020 15:51:00',
                         message: 'OK!!',
                         status: 'received'
                     }
@@ -173,7 +173,25 @@ var app = new Vue({
         inputSearch: '',
         messageSelected: 0,
         infoBtn: false,
-        reply: [
+        isChatEmpty: false,
+        isListening: false,
+        emojiPanel: false,
+        emoji: [
+            '127853',
+            '127906',
+            '128039',
+            '128152',
+            '128285',
+            '128512',
+            '128514',
+            '128525',
+            '128557',
+            '128545',
+            '127880',
+            '127881',
+            '127752',
+        ],
+        reply: [ //Not in use with AI Chat Bot
             {
                 message: `Ok!`
             },
@@ -201,7 +219,7 @@ var app = new Vue({
             if (!this.inputMessage == '' && this.inputMessage.trim().length > 0) {
 
                 let newSentMessage = {
-                    date: this.liveTime(),
+                    dateStamp: this.liveTime(),
                     message: this.inputMessage,
                     status: 'sent'
                 };
@@ -209,14 +227,17 @@ var app = new Vue({
                 this.contacts[this.contactSelected].messages.push(newSentMessage);
                 this.inputMessage = '';
 
-                this.autoReply();
+                this.isChatEmpty = false;
+
+                //this.autoReply(); //Not in use with AI Chat Bot
             }
         },
         autoReply() {
+            //Not in use with AI Chat Bot
             setTimeout(() => {
                 let randomMessage = this.reply[this.randomNumber(0, this.reply.length - 1)].message;
                 let newReceivedMessage = {
-                    date: this.liveTime(),
+                    dateStamp: this.liveTime(),
                     message: randomMessage,
                     status: 'received'
                 };
@@ -228,19 +249,21 @@ var app = new Vue({
                 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
                 var recognition = new SpeechRecognition();
 
-                recognition.onstart = function() {
-                    console.log('Sto registrando')
+                recognition.onstart = () => {
+                    this.isListening = true;
+
+                    console.log('Sto ascoltando...')
                 }
-                
-                recognition.onspeechend = function() {
-                    console.log('Ho registrato')
+
+                recognition.onspeechend = () => {
+                    this.isListening = false;
                     recognition.stop();
+
+                    console.log('Ho trascritto le tue parole!')
                 }
 
                 recognition.onresult = (event) => {
                     var transcript = event.results[0][0].transcript;
-
-                    console.log(transcript)
                     this.inputMessage = transcript;
                 };
 
@@ -262,27 +285,107 @@ var app = new Vue({
             }
         },
         deleteMessage(index) {
-            this.contacts[this.contactSelected].messages.splice(index, 1);
+            if (this.contacts[this.contactSelected].messages.length == 1) {
+                this.isChatEmpty = true;
+            }   else {
+                this.contacts[this.contactSelected].messages.splice(index, 1);
+                this.infoBtn = false;
+            }
         },
         liveTime() {
             const timeStamp = dayjs().format('DD/MM/YYYY HH:mm:ss');
             return timeStamp;
         },
-        formatTime(date) {
-            let formatTime = date.substring(11, 16);
+        formatTime(dateStamp) {
+            let formatTime = dateStamp.substring(11, 16);
             return formatTime;
         },
         getLastMessage(index) {
             let lastMessage = this.contacts[index].messages.length - 1;
-            return this.contacts[index].messages[lastMessage].message;
+            if (lastMessage == -1) {
+                return '';
+            } else {
+                return this.contacts[index].messages[lastMessage].message;
+            }
         },
         getLastDate(index) {
             let lastDate = this.contacts[index].messages.length - 1;
-            return this.contacts[index].messages[lastDate].date;
+            if (lastDate == -1) {
+                return '';
+            } else {
+                return this.contacts[index].messages[lastDate].dateStamp;
+            }
         },
         whoIsInfo(index) {
-            console.log(this.contacts[this.contactSelected].messages[index])
+            this.messageSelected = index;
+            
+            if (this.infoBtn == false) {
+                this.infoBtn = true;
+            } else {
+                this.infoBtn = false;
+            }
         },
+        infoOut() {
+            this.infoBtn = false;
+        },
+        emojiSelect(emoji) {
+            console.log(emoji)
+            this.inputMessage = this.inputMessage + String.fromCodePoint(emoji);
+        },
+        showEmoji() {
+            if (this.emojiPanel == false) {
+                this.emojiPanel = true;
+            } else {
+                this.emojiPanel = false;
+            }
+        },
+        emojiOut() {
+            this.emojiPanel = false
+        },
+        messageByOpenAI() {
+            this.inputMessage.trim();
+            if (!this.inputMessage == '' && this.inputMessage.trim().length > 0) {
+                console.log('Messaggio ricevuto, sto pensando una risposta...')
+
+                var prompt_text = this.inputMessage;
+                var url = "https://api.openai.com/v1/engines/text-davinci-002/completions";
+
+                var xhr = new XMLHttpRequest();
+                xhr.responseType = 'json';
+                xhr.open("POST", url);
+
+                //IMPORTANT! The following "sk-N3wuP....."" is my demo API key, please use yours if you have to do many test. Get it for free at https://beta.openai.com/overview
+                xhr.setRequestHeader("Content-Type", "application/json");
+                xhr.setRequestHeader("Authorization", "Bearer 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");
+
+                var data = `{
+                    "prompt": "${prompt_text}",
+                    "temperature": 0.7,
+                    "max_tokens": 256,
+                    "top_p": 1,
+                    "frequency_penalty": 0.75,
+                    "presence_penalty": 0
+                }`;
+
+                xhr.send(data);
+
+                xhr.onreadystatechange = () => {
+                    if (xhr.readyState === 4) {
+                        let responseArray = xhr.response.choices;
+                        let responseOpenAI = responseArray[0].text.trim();
+
+                        let newReceivedMessage = {
+                            dateStamp: this.liveTime(),
+                            message: responseOpenAI,
+                            status: 'received'
+                        };
+                        this.contacts[this.contactSelected].messages.push(newReceivedMessage);
+
+                        console.log('Ti ho risposto!')
+                    }
+                }
+            }
+        }
     },
     computed: {
         contactsSearched() {
@@ -290,9 +393,27 @@ var app = new Vue({
                 return contact.name.toLowerCase().includes(this.inputSearch.trim().toLowerCase());
             });
             return filteredContacts;
+        },
+        messageChat() {
+            let filteredMessage = [];
+            if (!this.isChatEmpty == true) {
+                filteredMessage = [...this.contacts[this.contactSelected].messages]
+                return filteredMessage;
+            }
+            this.contacts[this.contactSelected].messages.splice(0, 1);
+            this.infoBtn = false;
+
+            return filteredMessage;
         }
     },
     mounted() {
-        console.log('INFO: Possibilità di usare lo speech to text su Chrome e Safari in italiano o su Edge in inglese.')
+        console.log(`
+            INFO: Speech to text ENG & ITA in Chrome & Safari, ENG in Edge. 
+            INFO: Talk or write in english, auto-reply by "OpenAI Playground". 
+        `);
     }
 });
+
+
+
+//0xbrax
