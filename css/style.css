@@ -9,27 +9,31 @@ img {
 
 :root {
     --fa-rotate-angle: 45deg;
-    --light-main-back: rgba(0,168,132,1);
-    --light-sec-back: rgba(223,224,221,1);
+
+    --light-main-back: #00a884;
+    --light-sec-back: #dfe0dd;
     --light-main-chat: #d8d8d8;
     --light-sec-chat: #ffffff;
-    --alert-back: #8edafc;
+    --light-alert-back: #8edafc;
     --light-chat-toggle: #eeeded;
-    --message-sent: #d5f9ba;
-    --message-received: #ffffff;
+    --light-message-sent: #d5f9ba;
+    --light-message-received: #ffffff;
     --message-delete: #ffff00;
     --now-listening: #ff0000;
+
+    --dark-main-back: #014e3d;
+    --dark-sec-back: #545454;
+    --dark-main-chat: #373737;
+    --dark-sec-chat: #000000;
+    --dark-alert-back: #196182;
+    --dark-chat-toggle: #7f7f7f;
+    --dark-message-sent: #508b23;
+    --dark-message-received: #616161;
 }
 
 body {
     font-family: 'Poppins', sans-serif;;
     height: 100vh;
-    background: var(--light-main-back);
-    background: linear-gradient(180deg, var(--light-main-back) 0%, var(--light-main-back) 25%, var(--light-sec-back) 25%);
-}
-#vue-app {
-    width: 80%;
-    max-width: 1200px;
 }
 
 
@@ -182,7 +186,20 @@ body {
 
 
 
+.app-body {
+    height: 100vh;
+    width: 100%;
+    background: var(--light-main-back);
+    background: linear-gradient(180deg, var(--light-main-back) 0%, var(--light-main-back) 25%, var(--light-sec-back) 25%);
+}
+.dark-body {
+    background: var(--dark-main-back);
+    background: linear-gradient(180deg, var(--dark-main-back) 0%, var(--dark-main-back) 25%, var(--dark-sec-back) 25%);
+}
+
 #app-container {
+    width: 80%;
+    max-width: 1200px;
     height: 80vh;
     box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.5);
 }
@@ -200,10 +217,17 @@ body {
 
 #user {
     height: 80px;
-    background-color: var(--light-main-chat);
+    position: relative;
 }
 #user img {
     height: 60px;
+}
+.add-contact {
+    background-color: aqua;
+    border-radius: 5px;
+    right: 45px;
+    top: 55px;
+    position: absolute;
 }
 
 .contacts-container {
@@ -243,6 +267,10 @@ body {
     background-image: url(../img/mine.jpg);
     background-repeat: repeat;
 }
+.dark-overlay {
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
 
 .message-content {
     padding: 15px;
@@ -257,16 +285,11 @@ body {
     padding: 5px;
     border-radius: 5px;
     background-color: var(--message-delete);
+    color: #000000;
 }
 
 
 
-.sent {
-    background-color: var(--message-sent);
-}
-.received {
-    background-color: var(--message-received);
-}
 .recording {
     color: var(--now-listening);
 }
@@ -283,15 +306,50 @@ body {
 
 
 
+.light-user{
+    background-color: var(--light-main-chat);
+}
 .light-main-chat {
     background-color: var(--light-main-chat);
 }
 .light-sec-chat {
     background-color: var(--light-sec-chat);
 }
-.alert-back {
-    background-color: var(--alert-back);
+.light-alert-back {
+    background-color: var(--light-alert-back);
 }
-.chat-toggle {
+.light-chat-toggle {
     background-color: var(--light-chat-toggle);
+}
+.light-sent {
+    background-color: var(--light-message-sent);
+}
+.light-received {
+    background-color: var(--light-message-received);
+}
+
+
+.dark-user{
+    background-color: var(--dark-main-chat);
+    color: #ffffff;
+}
+.dark-main-chat {
+    background-color: var(--dark-main-chat);
+    color: #ffffff;
+}
+.dark-sec-chat {
+    background-color: var(--dark-sec-chat);
+    color: #ffffff;
+}
+.dark-alert-back {
+    background-color: var(--dark-alert-back);
+}
+.dark-chat-toggle {
+    background-color: var(--dark-chat-toggle);
+}
+.dark-sent {
+    background-color: var(--dark-message-sent);
+}
+.dark-received {
+    background-color: var(--dark-message-received);
 }

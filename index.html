@@ -13,14 +13,16 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
 
-    <body class="flex justify-ctr align-ctr">
+    <body>
         <div id="vue-app">
 
-            <div id="app-container" class="flex light-sec-chat">
+            <div class="app-body flex justify-ctr align-ctr" v-bind:class="isDarkMode == true ? 'dark-body' : ''">
 
-                    <div id="user-container" class="flex dir-col pb-10">
+                <div id="app-container" class="flex" v-bind:class="isDarkMode == true ? 'dark-sec-chat' : 'light-sec-chat'">
 
-                        <div id="user" class="flex justify-sp-bw align-ctr px-10 light-main-chat">
+                    <div id="user-container" class="flex dir-col pb-10" @mouseleave="addContactOut()">
+
+                        <div id="user" class="flex justify-sp-bw align-ctr px-10" v-bind:class="isDarkMode == true ? 'dark-user' : 'light-user'">
                             <div class="flex align-ctr">
                                 <img v-bind:src="`img/avatar${user.avatar}.jpg`" v-bind:alt="user.name" class="rounded-circle" />
                                 <div class="mx-10 text-bold">
@@ -28,14 +30,19 @@
                                 </div>
                             </div>
                             <div class="font-sz-25">
-                                <i class="fa-solid fa-plus mr-10"></i>
-                                <i class="fa-solid fa-circle-half-stroke mr-10"></i>
+                                <i class="fa-solid fa-plus mr-10 pointer" @click="showAddContact()"></i>
+                                <i class="fa-solid fa-circle-half-stroke mr-10 pointer" @click="darkModeToggle()"></i>
                                 <i class="fa-solid fa-gear mr-10"></i>
                                 <i class="fa-solid fa-ellipsis-vertical mr-10"></i>
                             </div>
+
+                            <div class="add-contact flex px-10 py-10" v-if="addContact == true">
+                                <input class="width-100 px-5 py-5" type="text" placeholder="Nome nuovo contatto" v-model="newName" @keyup.enter="addNewContact()">
+                                <button class="px-5 py-5 ml-10" @click="addNewContact()">Aggiungi</button>
+                            </div>
                         </div>
 
-                        <div class="block-heigth-40 flex align-ctr px-10 alert-back">
+                        <div class="block-heigth-40 flex align-ctr px-10" v-bind:class="isDarkMode == true ? 'dark-alert-back' : 'light-alert-back'">
                             <div class="font-sz-20">
                                 <i class="fa-solid fa-bell-slash"></i>
                             </div>
@@ -53,7 +60,7 @@
                                 v-for="(contact, contactIndex) in contactsSearched" 
                                 @click="whoIsSelected(contactIndex)"
                                 class="flex px-10 py-10"
-                                v-bind:class="contactIndex == contactSelected ? 'chat-toggle' : ''">
+                                v-bind:class="chatSelection(contactIndex)">
                                 <img v-bind:src="`img/avatar${contact.avatar}.jpg`" v-bind:alt="contact.name" class="rounded-circle" />
                                     <div class="width-100 flex dir-col justify-sp-bw ml-10 mr-20">
                                     <div>
@@ -69,7 +76,7 @@
                             <div 
                                 v-if="contactsSearched.length == 0"
                                 class="px-10 py-10">
-                                Nessun contatto trovato
+                                    Nessun contatto trovato
                             </div>
                         </div>
 
@@ -93,46 +100,47 @@
                             </div>
                         </div>
 
-                        <div class="message-section flex dir-col pt-20" v-chat-scroll>
-                            <div v-for="(message, messageIndex) in messageChat">
-                                <div class="message-content mb-20 mx-20" v-bind:class="messageStatus(messageIndex)" @mouseleave="infoOut()">
-                                    <div class="flex justify-sp-bt">
-                                        <div>
-                                            {{message.message}}
+                        <div class="message-section" v-chat-scroll>
+                            <div class="flex dir-col pt-20" v-bind:class="isDarkMode == true ? 'dark-overlay' : ''">
+                                <div v-for="(message, messageIndex) in messageChat">
+                                    <div class="message-content mb-20 mx-20" v-bind:class="messageStatus(messageIndex)" @mouseleave="infoOut()">
+                                        <div class="flex justify-sp-bt">
+                                            <div>
+                                                {{message.message}}
+                                            </div>
+                                            <div @click="whoIsInfo(messageIndex)" class="ml-10 pointer">
+                                                <i class="fa-solid fa-circle-dot"></i>
+                                            </div>
                                         </div>
-                                        <div @click="whoIsInfo(messageIndex)" class="ml-10 pointer">
-                                            <i class="fa-solid fa-circle-dot"></i>
+    
+                                        <div class="text-r">{{formatTime(message.dateStamp)}}</div>
+    
+                                        <div class="delete-message pointer" 
+                                            v-show="infoBtn == true" 
+                                            v-if="messageIndex == messageSelected" 
+                                            @click="deleteMessage(messageIndex)">
+                                                Elimina
                                         </div>
                                     </div>
-
-                                    <div class="text-r">{{formatTime(message.dateStamp)}}</div>
-
-                                    <div class="delete-message pointer" 
-                                        v-show="infoBtn == true" 
-                                        v-if="messageIndex == messageSelected" 
-                                        @click="deleteMessage(messageIndex)">
-                                            Elimina
-                                    </div>
+                                </div>
+    
+                                <div 
+                                    v-if="messageChat.length == 0"
+                                    class="flex justify-ctr my-20">
+                                        Nessun messaggio in questa chat
                                 </div>
                             </div>
 
-                            
-                            <div 
-                                v-if="messageChat.length == 0"
-                                class="flex justify-ctr my-20">
-                                Nessun messaggio in questa chat
-                            </div>
-                            
                         </div>
 
-                        <div id="input-section" class="flex align-ctr px-10 light-main-chat">
+                        <div id="input-section" class="flex align-ctr px-10" v-bind:class="isDarkMode == true ? 'dark-user' : 'light-user'">
                             <div class="font-sz-25 pointer" @click="showEmoji()">
                                 <i class="fa-regular fa-face-smile"></i>
                             </div>
 
-                            <input class="width-100 px-5 py-5 mx-10" type="text" placeholder="Scrivi messaggio" v-model="inputMessage" @keyup.enter="messageByOpenAI(); sendMessage()">
+                            <input class="width-100 px-5 py-5 mx-10" type="text" placeholder="Scrivi messaggio" v-model="inputMessage" @keyup.enter="messageByOpenAI(); sendMessage(); emojiOut()">
 
-                            <div @click="messageByOpenAI(); sendMessage()" class="font-sz-25 mr-15 pointer">
+                            <div @click="messageByOpenAI(); sendMessage(); emojiOut()" class="font-sz-25 mr-15 pointer">
                                 <i class="fa-solid fa-location-arrow fa-rotate-by"></i>
                             </div>
                             <div @click="runSpeechRecognition()" class="font-sz-25 mr-10 pointer" 
@@ -148,7 +156,9 @@
                         </div>
 
                     </div>
+                </div>
             </div>
+
         </div>
 
 

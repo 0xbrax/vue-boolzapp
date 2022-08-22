@@ -168,13 +168,16 @@ var app = new Vue({
                 ],
             }
         ],
+        filteredContacts: [],
         contactSelected: 0,
         inputMessage: '',
         inputSearch: '',
         messageSelected: 0,
+        newName: '',
         infoBtn: false,
         isChatEmpty: false,
         isListening: false,
+        addContact: false,
         emojiPanel: false,
         emoji: [
             '127853',
@@ -191,6 +194,7 @@ var app = new Vue({
             '127881',
             '127752',
         ],
+        isDarkMode: false,
         reply: [ //Not in use with AI Chat Bot
             {
                 message: `Ok!`
@@ -279,9 +283,17 @@ var app = new Vue({
         },
         messageStatus(index) {
             if (this.contacts[this.contactSelected].messages[index].status == 'sent') {
-                return 'sent float-r';
+                if (this.isDarkMode == false) {
+                    return 'light-sent float-r';
+                } else {
+                    return 'dark-sent float-r';
+                }
             } else {
-                return 'received float-l';
+                if (this.isDarkMode == false) {
+                    return 'light-received float-l';
+                } else {
+                    return 'dark-received float-l';
+                }
             }
         },
         deleteMessage(index) {
@@ -328,6 +340,30 @@ var app = new Vue({
         infoOut() {
             this.infoBtn = false;
         },
+        showAddContact() {
+            if (this.addContact == false) {
+                this.addContact = true;
+            } else {
+                this.addContact = false;
+            }
+        },
+        addContactOut() {
+            this.addContact = false;
+        },
+        addNewContact() {
+            if (!this.newName == '') {
+                let newContact = {
+                    name: this.newName,
+                    avatar: '_default',
+                    visible: true,
+                    messages: []
+                }
+
+                this.contacts.push(newContact);
+                this.newName = '';
+                this.addContact = false;
+            }
+        },
         emojiSelect(emoji) {
             console.log(emoji)
             this.inputMessage = this.inputMessage + String.fromCodePoint(emoji);
@@ -342,6 +378,22 @@ var app = new Vue({
         emojiOut() {
             this.emojiPanel = false
         },
+        chatSelection(contactIndex) {
+            if (contactIndex == this.contactSelected) {
+                if (this.isDarkMode == false) {
+                    return 'light-chat-toggle';
+                } else {
+                    return 'dark-chat-toggle';
+                }
+            }
+        },
+        darkModeToggle() {
+            if (this.isDarkMode == false) {
+                this.isDarkMode = true;
+            } else {
+                this.isDarkMode = false;
+            }
+        },
         messageByOpenAI() {
             this.inputMessage.trim();
             if (!this.inputMessage == '' && this.inputMessage.trim().length > 0) {
@@ -355,8 +407,9 @@ var app = new Vue({
                 xhr.open("POST", url);
 
                 //IMPORTANT! The following "sk-N3wuP....."" is my demo API key, please use yours if you have to do many test. Get it for free at https://beta.openai.com/overview
+                //If the program doesn't work, you just need to generate a new API from your profile and replace it
                 xhr.setRequestHeader("Content-Type", "application/json");
-                xhr.setRequestHeader("Authorization", "Bearer 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");
+                xhr.setRequestHeader("Authorization", "Bearer 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");
 
                 var data = `{
                     "prompt": "${prompt_text}",
@@ -389,19 +442,20 @@ var app = new Vue({
     },
     computed: {
         contactsSearched() {
-            const filteredContacts = this.contacts.filter(contact => {
+            let filteredContacts = this.contacts.filter(contact => {
                 return contact.name.toLowerCase().includes(this.inputSearch.trim().toLowerCase());
             });
             return filteredContacts;
         },
         messageChat() {
             let filteredMessage = [];
-            if (!this.isChatEmpty == true) {
+            if (this.isChatEmpty == false) {
                 filteredMessage = [...this.contacts[this.contactSelected].messages]
                 return filteredMessage;
             }
             this.contacts[this.contactSelected].messages.splice(0, 1);
             this.infoBtn = false;
+            this.isChatEmpty = false;
 
             return filteredMessage;
         }
