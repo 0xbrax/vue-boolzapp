@@ -14,20 +14,22 @@ img {
     --light-sec-back: #dfe0dd;
     --light-main-chat: #d8d8d8;
     --light-sec-chat: #ffffff;
-    --light-alert-back: #8edafc;
+    --light-alert-back: #aae4ff;
     --light-chat-toggle: #eeeded;
     --light-message-sent: #d5f9ba;
-    --light-message-received: #ffffff;
-    --message-delete: #ffff00;
-    --now-listening: #ff0000;
+    --light-message-received: #d1d1d1;
 
-    --dark-main-back: #014e3d;
-    --dark-sec-back: #545454;
+    --item-delete: #ffea00;
+    --now-listening: #ff0000;
+    --panel-toggle: #00ffff;
+
+    --dark-main-back: #6b0174;
+    --dark-sec-back: #4d4d4d;
     --dark-main-chat: #373737;
     --dark-sec-chat: #000000;
     --dark-alert-back: #196182;
     --dark-chat-toggle: #7f7f7f;
-    --dark-message-sent: #508b23;
+    --dark-message-sent: #9e00ac;
     --dark-message-received: #616161;
 }
 
@@ -64,6 +66,11 @@ body {
 .float-r {
     float: right;
     clear: right;
+}
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
 }
 
 .text-l {
@@ -223,11 +230,19 @@ body {
     height: 60px;
 }
 .add-contact {
-    background-color: aqua;
+    background-color: var(--panel-toggle);
     border-radius: 5px;
     right: 45px;
     top: 55px;
     position: absolute;
+}
+.add-contact button {
+    background-color: rgb(255, 195, 85);
+    border: 2px solid rgb(255, 166, 0);
+    border-radius: 5px;
+}
+.add-contact button:hover {
+    background-color: rgb(255, 209, 125);
 }
 
 .contacts-container {
@@ -240,6 +255,19 @@ body {
 }
 #contact img {
     height: 80px;
+}
+
+.contact-content {
+    position: relative;
+}
+.delete-contact {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: var(--item-delete);
+    color: #000000;
 }
 
 .message-preview {
@@ -264,12 +292,17 @@ body {
 .message-section {
     height: calc(100% - (80px + 80px));
     overflow-y: scroll;
-    background-image: url(../img/mine.jpg);
-    background-repeat: repeat;
+    
 }
-.dark-overlay {
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
+.light-message-section {
+    background-image: url(../img/light-whatsapp-back.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.dark-message-section {
+    background-image: url(../img/dark-whatsapp-back.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .message-content {
@@ -284,7 +317,7 @@ body {
     right: 15px;
     padding: 5px;
     border-radius: 5px;
-    background-color: var(--message-delete);
+    background-color: var(--item-delete);
     color: #000000;
 }
 
@@ -301,7 +334,7 @@ body {
     width: 187px;
     padding: 5px;
     border-radius: 5px;
-    background-color: aqua;
+    background-color: var(--panel-toggle);
 }
 
 

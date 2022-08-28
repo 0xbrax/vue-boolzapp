@@ -7,174 +7,185 @@ var app = new Vue({
         },
         contacts: [
             {
+                id: 1,
                 name: 'Michele',
                 avatar: '_1',
                 visible: true,
                 messages: [
                     {
-                        dateStamp: '10/01/2020 15:30:55',
+                        dateStamp: '01/10/2020 15:30:55',
                         message: 'Hai portato a spasso il cane?',
                         status: 'sent'
                     },
                     {
-                        dateStamp: '10/01/2020 15:50:00',
+                        dateStamp: '01/10/2020 15:50:00',
                         message: 'Ricordati di stendere i panni',
                         status: 'sent'
                     },
                     {
-                        dateStamp: '10/01/2020 16:15:22',
+                        dateStamp: '01/10/2020 16:15:22',
                         message: 'Tutto fatto!',
                         status: 'received'
                     }
                 ],
             },
             {
+                id: 2,
                 name: 'Fabio',
                 avatar: '_2',
                 visible: true,
                 messages: [
                     {
-                        dateStamp: '20/03/2020 16:30:00',
+                        dateStamp: '03/20/2020 16:30:00',
                         message: 'Ciao come stai?',
                         status: 'sent'
                     },
                     {
-                        dateStamp: '20/03/2020 16:30:55',
+                        dateStamp: '03/20/2020 16:30:55',
                         message: 'Bene grazie! Stasera ci vediamo?',
                         status: 'received'
                     },
                     {
-                        dateStamp: '20/03/2020 16:35:00',
+                        dateStamp: '03/20/2020 16:35:00',
                         message: 'Mi piacerebbe ma devo andare a fare la spesa.',
                         status: 'sent'
                     }
                 ],
             },
             {
+                id: 3,
                 name: 'Samuele',
                 avatar: '_3',
                 visible: true,
                 messages: [
                     {
-                        dateStamp: '28/03/2020 10:10:40',
+                        dateStamp: '03/28/2020 10:10:40',
                         message: 'La Marianna va in campagna',
                         status: 'received'
                     },
                     {
-                        dateStamp: '28/03/2020 10:20:10',
+                        dateStamp: '03/28/2020 10:20:10',
                         message: 'Sicuro di non aver sbagliato chat?',
                         status: 'sent'
                     },
                     {
-                        dateStamp: '28/03/2020 16:15:22',
+                        dateStamp: '03/28/2020 16:15:22',
                         message: 'Ah scusa!',
                         status: 'received'
                     }
                 ],
             },
             {
+                id: 4,
                 name: 'Alessandro B.',
                 avatar: '_4',
                 visible: true,
                 messages: [
                     {
-                        dateStamp: '10/01/2020 15:30:55',
+                        dateStamp: '01/10/2020 15:30:55',
                         message: 'Lo sai che ha aperto una nuova pizzeria?',
                         status: 'sent'
                     },
                     {
-                        dateStamp: '10/01/2020 15:50:00',
+                        dateStamp: '01/10/2020 15:50:00',
                         message: 'Si, ma preferirei andare al cinema',
                         status: 'received'
                     }
                 ],
             },
             {
+                id: 5,
                 name: 'Alessandro L.',
                 avatar: '_5',
                 visible: true,
                 messages: [
                     {
-                        dateStamp: '10/01/2020 15:30:55',
+                        dateStamp: '01/10/2020 15:30:55',
                         message: 'Ricordati di chiamare la nonna',
                         status: 'sent'
                     },
                     {
-                        dateStamp: '10/01/2020 15:50:00',
+                        dateStamp: '01/10/2020 15:50:00',
                         message: 'Va bene, stasera la sento',
                         status: 'received'
                     }
                 ],
             },
             {
+                id: 6,
                 name: 'Claudia',
                 avatar: '_6',
                 visible: true,
                 messages: [
                     {
-                        dateStamp: '10/01/2020 15:30:55',
+                        dateStamp: '01/10/2020 15:30:55',
                         message: 'Ciao Claudia, hai novità?',
                         status: 'sent'
                     },
                     {
-                        dateStamp: '10/01/2020 15:50:00',
+                        dateStamp: '01/10/2020 15:50:00',
                         message: 'Non ancora',
                         status: 'received'
                     },
                     {
-                        dateStamp: '10/01/2020 15:51:00',
+                        dateStamp: '01/10/2020 15:51:00',
                         message: 'Nessuna nuova, buona nuova',
                         status: 'sent'
                     }
                 ],
             },
             {
+                id: 7,
                 name: 'Federico',
                 avatar: '_7',
                 visible: true,
                 messages: [
                     {
-                        dateStamp: '10/01/2020 15:30:55',
+                        dateStamp: '01/10/2020 15:30:55',
                         message: 'Fai gli auguri a Martina che è il suo compleanno!',
                         status: 'sent'
                     },
                     {
-                        dateStamp: '10/01/2020 15:50:00',
+                        dateStamp: '01/10/2020 15:50:00',
                         message: 'Grazie per avermelo ricordato, le scrivo subito!',
                         status: 'received'
                     }
                 ],
             },
             {
+                id: 8,
                 name: 'Davide',
                 avatar: '_8',
                 visible: true,
                 messages: [
                     {
-                        dateStamp: '10/01/2020 15:30:55',
+                        dateStamp: '01/10/2020 15:30:55',
                         message: 'Ciao, andiamo a mangiare la pizza stasera?',
                         status: 'received'
                     },
                     {
-                        dateStamp: '10/01/2020 15:50:00',
+                        dateStamp: '01/10/2020 15:50:00',
                         message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
                         status: 'sent'
                     },
                     {
-                        dateStamp: '10/01/2020 15:51:00',
+                        dateStamp: '01/10/2020 15:51:00',
                         message: 'OK!!',
                         status: 'received'
                     }
                 ],
             }
         ],
-        filteredContacts: [],
         contactSelected: 0,
+        contactsCheck: false,
+        isContactsEmpty: false,
+        newContactID: 0,
         inputMessage: '',
         inputSearch: '',
         messageSelected: 0,
         newName: '',
-        infoBtn: false,
+        infoContact: false,
+        infoMessage: false,
         isChatEmpty: false,
         isListening: false,
         addContact: false,
@@ -220,7 +231,10 @@ var app = new Vue({
         sendMessage() {
             this.inputMessage.trim();
 
-            if (!this.inputMessage == '' && this.inputMessage.trim().length > 0) {
+            if (!this.inputMessage == '' && this.inputMessage.trim().length > 0 && this.isContactsEmpty == false) {
+                if (this.contacts[this.contactSelected].messages[0].status == 'empty') {
+                    this.contacts[this.contactSelected].messages.splice(0, 1);
+                }
 
                 let newSentMessage = {
                     dateStamp: this.liveTime(),
@@ -236,8 +250,7 @@ var app = new Vue({
                 //this.autoReply(); //Not in use with AI Chat Bot
             }
         },
-        autoReply() {
-            //Not in use with AI Chat Bot
+        autoReply() {//Not in use with AI Chat Bot
             setTimeout(() => {
                 let randomMessage = this.reply[this.randomNumber(0, this.reply.length - 1)].message;
                 let newReceivedMessage = {
@@ -247,6 +260,10 @@ var app = new Vue({
                 };
                 this.contacts[this.contactSelected].messages.push(newReceivedMessage);
             }, 1500);
+        },
+        randomNumber(min, max) {
+            const number = Math.floor(Math.random() * (max - min + 1) + min);
+            return number;
         },
         runSpeechRecognition() {
             if ('webkitSpeechRecognition' in window) {
@@ -276,11 +293,6 @@ var app = new Vue({
                 alert('Speech to text non disponibile, prova su un altro browser.')
             }
         },
-        randomNumber(min, max) {
-            const number = Math.floor(Math.random() * (max - min + 1) + min);
-
-            return number;
-        },
         messageStatus(index) {
             if (this.contacts[this.contactSelected].messages[index].status == 'sent') {
                 if (this.isDarkMode == false) {
@@ -299,13 +311,13 @@ var app = new Vue({
         deleteMessage(index) {
             if (this.contacts[this.contactSelected].messages.length == 1) {
                 this.isChatEmpty = true;
-            }   else {
+            } else {
                 this.contacts[this.contactSelected].messages.splice(index, 1);
-                this.infoBtn = false;
+                this.infoMessage = false;
             }
         },
         liveTime() {
-            const timeStamp = dayjs().format('DD/MM/YYYY HH:mm:ss');
+            const timeStamp = dayjs().format('MM/DD/YYYY HH:mm:ss');
             return timeStamp;
         },
         formatTime(dateStamp) {
@@ -330,15 +342,15 @@ var app = new Vue({
         },
         whoIsInfo(index) {
             this.messageSelected = index;
-            
-            if (this.infoBtn == false) {
-                this.infoBtn = true;
+
+            if (this.infoMessage == false) {
+                this.infoMessage = true;
             } else {
-                this.infoBtn = false;
+                this.infoMessage = false;
             }
         },
         infoOut() {
-            this.infoBtn = false;
+            this.infoMessage = false;
         },
         showAddContact() {
             if (this.addContact == false) {
@@ -352,7 +364,10 @@ var app = new Vue({
         },
         addNewContact() {
             if (!this.newName == '') {
+                this.newContactID++
+
                 let newContact = {
+                    id: (this.newContactID),
                     name: this.newName,
                     avatar: '_default',
                     visible: true,
@@ -362,10 +377,35 @@ var app = new Vue({
                 this.contacts.push(newContact);
                 this.newName = '';
                 this.addContact = false;
+                this.isContactsEmpty = false;
+            }
+        },
+        contactInfo() {
+            if (this.infoContact == false) {
+                this.infoContact = true;
+            } else {
+                this.infoContact = false;
+            }
+        },
+        contactInfoOut() {
+            this.infoContact = false;
+            this.newName = '';
+        },
+        deleteContact(index) {
+            this.infoContact = false;
+
+            if (this.contacts.length == 1) {
+                this.isContactsEmpty = true;
+            } else {
+                this.contacts.splice(index, 1);
+                this.isContactsEmpty = false;
+            }
+
+            if (this.contactSelected !== 0) {
+                this.contactSelected--;
             }
         },
         emojiSelect(emoji) {
-            console.log(emoji)
             this.inputMessage = this.inputMessage + String.fromCodePoint(emoji);
         },
         showEmoji() {
@@ -396,7 +436,8 @@ var app = new Vue({
         },
         messageByOpenAI() {
             this.inputMessage.trim();
-            if (!this.inputMessage == '' && this.inputMessage.trim().length > 0) {
+
+            if (!this.inputMessage == '' && this.inputMessage.trim().length > 0 && this.isContactsEmpty == false) {
                 console.log('Messaggio ricevuto, sto pensando una risposta...')
 
                 var prompt_text = this.inputMessage;
@@ -409,7 +450,7 @@ var app = new Vue({
                 //IMPORTANT! The following "sk-N3wuP....."" is my demo API key, please use yours if you have to do many test. Get it for free at https://beta.openai.com/overview
                 //If the program doesn't work, you just need to generate a new API from your profile and replace it
                 xhr.setRequestHeader("Content-Type", "application/json");
-                xhr.setRequestHeader("Authorization", "Bearer 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");
+                xhr.setRequestHeader("Authorization", "Bearer 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");
 
                 var data = `{
                     "prompt": "${prompt_text}",
@@ -432,7 +473,8 @@ var app = new Vue({
                             message: responseOpenAI,
                             status: 'received'
                         };
-                        this.contacts[this.contactSelected].messages.push(newReceivedMessage);
+
+                        this.contacts[0].messages.push(newReceivedMessage);
 
                         console.log('Ti ho risposto!')
                     }
@@ -442,25 +484,62 @@ var app = new Vue({
     },
     computed: {
         contactsSearched() {
-            let filteredContacts = this.contacts.filter(contact => {
-                return contact.name.toLowerCase().includes(this.inputSearch.trim().toLowerCase());
-            });
+            let filteredContacts = [];
+            let idFollow = null;
+
+            this.contactsCheck = false;
+
+            for (let i = 0; i < this.contacts.length; i++) {
+                if (!this.contacts[i].name.toLowerCase().includes(this.inputSearch.trim().toLowerCase())) {
+                    this.contacts[i].visible = false;
+                } else {
+                    this.contacts[i].visible = true;
+                    this.contactsCheck = true;
+                }
+
+                if (this.contacts[i].messages.length == 0) {
+                    this.contacts[i].messages.push({
+                        dateStamp: '01/01/1990 00:00:00',
+                        message: null,
+                        status: 'empty'
+                    });
+                }
+            }
+
+            if (this.isContactsEmpty == true) {
+                filteredContacts = []
+                this.contacts.splice(0, 1);
+                this.infoContact = false;
+
+                return filteredContacts;
+            } else {
+                idFollow = this.contacts[this.contactSelected].id;
+                this.contacts.sort((a, b) => new Date(b.messages[b.messages.length - 1].dateStamp) - new Date(a.messages[a.messages.length - 1].dateStamp));
+                this.contactSelected = this.contacts.findIndex(contact => contact.id == idFollow)
+
+                filteredContacts = this.contacts;
+            }
+
             return filteredContacts;
         },
         messageChat() {
             let filteredMessage = [];
+
             if (this.isChatEmpty == false) {
                 filteredMessage = [...this.contacts[this.contactSelected].messages]
                 return filteredMessage;
             }
             this.contacts[this.contactSelected].messages.splice(0, 1);
-            this.infoBtn = false;
+            this.infoMessage = false;
             this.isChatEmpty = false;
 
             return filteredMessage;
         }
     },
     mounted() {
+        this.contactSelected = 0;
+        this.newContactID = this.contacts.length;
+
         console.log(`
             INFO: Speech to text ENG & ITA in Chrome & Safari, ENG in Edge. 
             INFO: Talk or write in english, auto-reply by "OpenAI Playground". 
